@@ -39,7 +39,7 @@ int main()
 void menu()
 {
 	int op = 0;
-	while (op != 6) {
+	while (op != 7) {
 		system("cls"); // somente no windows
 		cout << "Menu Arvore";
 		cout << endl << endl;
@@ -58,7 +58,7 @@ void menu()
 		{
 		case 1: inicializar();
 			break;
-		case 2:exibirQuantidade();
+		case 2: exibirQuantidade();
 			break;
 		case 3: inserir();
 			break;
@@ -79,7 +79,7 @@ void menu()
 void inicializar()
 {
 
-	// provisório porque não libera a memoria usada pela arvore
+	// provisï¿½rio porque nï¿½o libera a memoria usada pela arvore
 	NO* raiz = NULL;
 
 	cout << "Arvore inicializada \n";
@@ -177,10 +177,17 @@ void exibirElementosArvore(NO* no)
 
 void buscarElementoArvore(NO* no, int valor)
 {
-	
-
+	if (no == NULL) {
+		cout << "O numero " << valor << " nao esta presente na lista" << endl;
+		return;
+	}
+	if (no->valor == valor) {
+		cout << "O numero " << no->valor << " esta presente na lista." << endl;
+		return;
+	}
+	if (no->valor > valor) {
+		buscarElementoArvore(no->esq, valor);
+	} else {
+		buscarElementoArvore(no->dir, valor);		
+	}
 }
-
-
-
-
